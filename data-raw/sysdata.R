@@ -13,7 +13,8 @@
 # limitations under the License.
 
 base_url <- "https://storage.googleapis.com/torchtransformers-models/"
-
+hf_url_prefix <- "https://huggingface.co/"
+hf_url_suffix <- "/blob/main/pytorch_model.bin"
 # maybe later store as a tibble with more info, but named vector is ok for now.
 
 weights_url_map <- c(
@@ -44,6 +45,21 @@ weights_url_map <- c(
   "bert_large_uncased" = paste0(
     base_url,
     "bert-large-uncased/v1/weights.pt"
+  ),
+  "layoutlm-base-uncased" = paste0(
+    hf_url_prefix,
+    "microsoft/layoutlm-base-uncased",
+    hf_url_suffix
+  ),
+  "layoutlm-base-cased" = paste0(
+    hf_url_prefix,
+    "microsoft/layoutlm-base-cased",
+    hf_url_suffix
+  ),
+  "layoutlm-large-uncased" = paste0(
+    hf_url_prefix,
+    "microsoft/layoutlm-large-uncased",
+    hf_url_suffix
   )
 )
 
@@ -75,7 +91,10 @@ bert_configs <- tibble::tribble(
   "bert_medium_uncased", 512L, 8L, 8L, 512L, 30522L,
   "bert_base_uncased", 768L, 12L, 12L, 512L, 30522L,
   "bert_base_cased", 768L, 12L, 12L, 512L, 28996L,
-  "bert_large_uncased", 1024L, 24L, 16L, 512L, 30522L
+  "bert_large_uncased", 1024L, 24L, 16L, 512L, 30522L,
+  "layoutlm-base-uncased", 768L, 12L, 12L, 512L, 50265L,
+  "layoutlm-base-cased", 768L, 12L, 12L, 512L, 50265L,
+  "layoutlm-large-uncased", 1024L, 24L, 16L, 512L, 30522L
 )
 
 
