@@ -58,21 +58,25 @@ make_and_load_bert <- function(model_name = "bert_tiny_uncased") {
 #' @param redownload Logical; should the weights be downloaded fresh even if
 #'   they're cached? This is not currently exposed to the end user, and exists
 #'   mainly so we can test more easily.
+#' @timeout Optional timeout in seconds for large file download.
 #'
 #' @return The parsed weights as a named list.
 #' @keywords internal
 .download_weights <- function(model_name = "bert_tiny_uncased",
-                              redownload = FALSE) {
+                              redownload = FALSE, timeout = 720) {
   url <- weights_url_map[model_name]
 
   return(
-    dlr::read_or_cache(
-      source_path = url,
-      appname = "torchtransformers",
-      process_f = .process_downloaded_weights,
-      read_f = torch::torch_load,
-      write_f = torch::torch_save,
-      force_process = redownload
+    withr::with_options(
+      list(timeout = timeout),
+      dlr::read_or_cache(
+        source_path = url,
+        appname = "torchtransformers",
+        process_f = .process_downloaded_weights,
+        read_f = torch::torch_load,
+        write_f = torch::torch_save,
+        force_process = redownload
+                        )
     )
   )
 }

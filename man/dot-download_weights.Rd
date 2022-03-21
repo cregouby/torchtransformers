@@ -4,7 +4,11 @@
 \alias{.download_weights}
 \title{Download and Cache Weights}
 \usage{
-.download_weights(model_name = "bert_tiny_uncased", redownload = FALSE)
+.download_weights(
+  model_name = "bert_tiny_uncased",
+  redownload = FALSE,
+  timeout = 720
+)
 }
 \arguments{
 \item{model_name}{Character; which flavor of BERT to use.}

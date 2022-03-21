@@ -14,7 +14,7 @@
 
 base_url <- "https://storage.googleapis.com/torchtransformers-models/"
 hf_url_prefix <- "https://huggingface.co/"
-hf_url_suffix <- "/blob/main/pytorch_model.bin"
+hf_url_suffix <- "/resolve/main/pytorch_model.bin"
 # maybe later store as a tibble with more info, but named vector is ok for now.
 
 weights_url_map <- c(
