@@ -91,3 +91,10 @@ test_that("pre-trained bert works", {
     tolerance = 0.0001
   )
 })
+
+test_that("pre-trained layoutlm works", {
+  testthat::expect_error(
+    make_and_load_bert("layoutlm-base-uncased"),
+    NA
+  )
+})
